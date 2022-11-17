@@ -1,15 +1,11 @@
 import { Label } from 'components/ContactForm/ContactForm.styled';
 import { Input } from './Filter.styled';
 
-import { useDispatch } from 'react-redux';
-import { addFilter } from 'redux/contactSlice';
-
-export const Filter = () => {
-  const dispatch = useDispatch();
+export const Filter = ({ onFilter }) => {
   const handleFilter = e => {
     const keyWord = e.target.value.toLowerCase().split(' ').join('');
 
-    dispatch(addFilter(keyWord));
+    onFilter(keyWord);
   };
 
   return (

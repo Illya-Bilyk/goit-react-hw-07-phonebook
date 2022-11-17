@@ -2,27 +2,12 @@ import { List } from './ContactList.styled';
 import PropTypes from 'prop-types';
 import { Contact } from './ContactItem';
 
-export const ContactList = ({ contacts, onDelete }) => {
-  const deleteContact = e => {
-    const deletingName = contacts.find(
-      contact => contact.name === e.target.name
-    );
-
-    onDelete(deletingName);
-  };
-
+export const ContactList = ({ contacts }) => {
   return (
     <List>
       {contacts.map(contact => {
-        const { id, name, number } = contact;
-        return (
-          <Contact
-            key={id}
-            name={name}
-            number={number}
-            onClick={deleteContact}
-          />
-        );
+        const { id, name, phoneNumber } = contact;
+        return <Contact key={id} id={id} name={name} number={phoneNumber} />;
       })}
     </List>
   );
@@ -33,8 +18,8 @@ ContactList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      phoneNumber: PropTypes.string.isRequired,
     })
   ).isRequired,
-  onDelete: PropTypes.func.isRequired,
+  // onDelete: PropTypes.func.isRequired,
 };

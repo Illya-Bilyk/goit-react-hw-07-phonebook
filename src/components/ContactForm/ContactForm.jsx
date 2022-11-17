@@ -1,8 +1,11 @@
 import { InputName, Button, Label } from './ContactForm.styled';
 import { Formik, Form } from 'formik';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
+import { useAddContactMutation } from '../../redux/contactSlice';
 
 export function ContactForm({ onSubmit }) {
+  const [addContact] = useAddContactMutation();
+
   const initialValues = {
     name: '',
     number: '',
@@ -10,11 +13,10 @@ export function ContactForm({ onSubmit }) {
 
   const handleSubmit = (values, { resetForm }) => {
     const newContact = {
-      id: nanoid(),
       name: values.name,
-      number: values.number,
+      phoneNumber: values.number,
     };
-    onSubmit(newContact);
+    addContact(newContact);
     resetForm();
   };
 
