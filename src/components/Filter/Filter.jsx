@@ -1,9 +1,12 @@
-import { Label } from 'components/ContactForm/ContactForm.styled';
+import { Label } from '../ContactForm/ContactForm.styled';
 import { Input } from './Filter.styled';
-
+import React from 'react';
 export const Filter = ({ onFilter }) => {
   const handleFilter = e => {
-    const keyWord = e.target.value.toLowerCase().split(' ').join('');
+    const keyWord = e.target.value
+      .toLowerCase()
+      .split(' ')
+      .join('');
 
     onFilter(keyWord);
   };

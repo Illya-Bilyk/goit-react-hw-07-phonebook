@@ -4,6 +4,7 @@ import { Filter } from './Filter';
 import { FormWrap, TitlePhone, TitleContact } from './App.styled';
 import { useGetContactsQuery } from '../redux/contactSlice';
 import { useState } from 'react';
+import React from 'react';
 
 export function App() {
   const [filter, setFilter] = useState('');
